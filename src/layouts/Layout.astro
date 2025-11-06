@@ -4,7 +4,9 @@ import Footer from "@/components/footer.astro";
 import Navbar from "@/components/navbar/navbar.astro";
 import "@fontsource-variable/inter/index.css";
 import "@fontsource-variable/bricolage-grotesque";
+import comingSoon from "@/assets/coming-soon.png";
 import "../styles/global.css";
+import { Image } from "astro:assets";
 
 export interface Props {
   title: string;
@@ -56,7 +58,7 @@ const makeTitle = title
     />
   </head>
   <body>
-    <Navbar />
+    <!-- <Navbar />
     <slot />
     <Footer />
     <style is:global>
@@ -65,6 +67,59 @@ const makeTitle = title
       img {
         content-visibility: auto;
       }
-    </style>
+    </style> -->
+    <div class="min-w-screen min-h-screen relative">
+      <div
+        class="flex flex-col items-center justify-center text-white z-10 absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 gap-6 text-center">
+        <div class="text-6xl font-bold typewriter-container">
+          <h1 class="typewriter-text">Somos Daffer</h1>
+        </div>
+        <div class="text-2xl">
+          Estamos afinando los últimos detalles de nuestra página. Pronto podrás
+          conocer todo lo que tenemos preparado.
+        </div>
+      </div>
+      <Image
+        src={comingSoon}
+        alt="Background"
+        class="min-w-full min-h-screen object-cover"
+        loading="eager"
+      />
+    </div>
   </body>
 </html>
+
+<style>
+  .typewriter-text {
+    font-family: monospace; /* Typewriter-like font */
+    color: white;
+    overflow: hidden; /* Hides text outside the animated width */
+    white-space: nowrap; /* Prevents text from wrapping */
+    border-right: 0.15em solid orange; /* The blinking cursor */
+    width: 0; /* Starting width for the typing animation */
+    animation:
+      typing 2s steps(40, end) forwards,
+      /* Typing animation */ blink-cursor 0.75s step-end infinite; /* Blinking cursor animation */
+  }
+
+  /* Keyframes for the typing animation */
+  @keyframes typing {
+    from {
+      width: 0;
+    }
+    to {
+      width: 100%;
+    }
+  }
+
+  /* Keyframes for the blinking cursor animation */
+  @keyframes blink-cursor {
+    from,
+    to {
+      border-color: transparent;
+    }
+    50% {
+      border-color: orange;
+    }
+  }
+</style>
